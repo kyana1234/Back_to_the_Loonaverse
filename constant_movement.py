@@ -73,7 +73,7 @@ class ConstantMovement:
 
     @staticmethod
     def get_random_velocity():
-        return int(round(5 * random.random()))
+        return random.random() + 0.5
 
     def move(self):
         """Move object by velocity"""

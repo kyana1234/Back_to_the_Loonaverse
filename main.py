@@ -90,16 +90,20 @@ while running:
             elif event.key == pygame.K_DOWN or event.key == pygame.K_UP:
                 player.set_vy(0)
 
+
     player.move()
     draw_player(player)
 
     # Spawn alien
-    if counter % 10000 == 0:
+    # Require game to have at least 1 alien on the screen
+    if counter % 1000 == 0 or len(spawned_aliens) == 0:
         spawned_aliens.append(alien.Alien(screen_dim))
 
     # Cross-check aliens and bullets for possible collisions or clear for movement
     for incoming_alien in spawned_aliens:
         remove_alien = False
+        if player.hit_by_alien(incoming_alien):
+            running = False
         for shot_bullet in spawned_bullets:
             if incoming_alien.hit_by_bullet(shot_bullet):
                 remove_alien = True
@@ -118,7 +122,6 @@ while running:
         else:
             incoming_alien.move()
             draw_alien(incoming_alien)
-
 
     pygame.display.update()
     counter += 1

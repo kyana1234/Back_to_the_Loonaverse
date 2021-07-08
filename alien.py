@@ -30,5 +30,5 @@ class Alien(constant_movement.ConstantMovement):
         """
         return (self.x + self.width >= bullet.get_x()
                 and self.y + self.height >= bullet.get_y()
-                and bullet.get_x + bullet.get_width() >= self.x
-                and bullet.get_y + bullet.get_height() >= self.y)
+                and bullet.get_x() + bullet.get_width() >= self.x
+                and bullet.get_y() + bullet.get_height() >= self.y)

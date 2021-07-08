@@ -99,8 +99,8 @@ class PlayerMovement:
         """
         return (self.player_x + self.width >= alien.get_x()
                 and self.player_y + self.height >= alien.get_y()
-                and alien.get_x + alien.get_width() >= self.player_x
-                and alien.get_y + alien.get_height() >= self.player_y)
+                and alien.get_x() + alien.get_width() >= self.player_x
+                and alien.get_y() + alien.get_height() >= self.player_y)
 
     # def draw(self, screen: pygame.display):
     #     """Default draw method that provides how the object should be drawn in the pygame display.
