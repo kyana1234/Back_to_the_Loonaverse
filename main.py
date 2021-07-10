@@ -96,7 +96,7 @@ def game_over_text(game_screen):
     """
     game_over_string = menu_font.render("GAME OVER", True, (255, 255, 255))
     game_over_rect = game_over_string.get_rect()
-    game_over_rect.midtop = (GAME_WINDOW_X / 2, GAME_WINDOW_Y / 4)
+    game_over_rect.midtop = (GAME_WINDOW_X / 2, GAME_WINDOW_Y / 6)
     game_screen.blit(game_over_string, game_over_rect)
 
 
@@ -109,7 +109,7 @@ def display_final_score(final_score, game_screen):
     """
     player_score_string = menu_font.render("Your Final Score: " + str(final_score), True, (255, 255, 255))
     player_score_rect = player_score_string.get_rect()
-    player_score_rect.midtop = (GAME_WINDOW_X / 2, GAME_WINDOW_Y / 3)
+    player_score_rect.midtop = (GAME_WINDOW_X / 2, GAME_WINDOW_Y / 4)
     game_screen.blit(player_score_string, player_score_rect)
 
 
@@ -130,7 +130,7 @@ def display_top_3(game_screen):
         top_score = top_3_dict['score'][i]
         top_score_string = menu_font.render(top_name + " " + str(top_score), True, (255, 255, 255))
         top_score_string_rect = top_score_string.get_rect()
-        top_score_string_rect.midtop = ((GAME_WINDOW_X / 2), (GAME_WINDOW_Y / 2) + text_buffer)
+        top_score_string_rect.midtop = ((GAME_WINDOW_X / 2), 3 * (GAME_WINDOW_Y / 4) + text_buffer)
         text_buffer += 30  # number of pixels to go to next line
         game_screen.blit(top_score_string, top_score_string_rect)
 
@@ -224,13 +224,13 @@ def main_game_loop(player_name):
                 running = False
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
-                    player.set_vx(-1.5)
+                    player.set_vx(-2.5)
                 elif event.key == pygame.K_RIGHT:
-                    player.set_vx(1.5)
+                    player.set_vx(2.5)
                 elif event.key == pygame.K_UP:
-                    player.set_vy(-1.5)
+                    player.set_vy(-2.5)
                 elif event.key == pygame.K_DOWN:
-                    player.set_vy(1.5)
+                    player.set_vy(2.5)
                 elif event.key == pygame.K_SPACE:
                     spawned_bullets.append(
                         bullet.Bullet(screen_dim, player.get_x(), player.get_y(), player.get_img_dim()))
@@ -297,7 +297,7 @@ def game_over(final_score, screen):
     running = True
     while running:
         game_over_text(screen)
-        display_score(final_score, screen)
+        display_final_score(final_score, screen)
         display_top_3(screen)
         pygame.display.update()
         for event in pygame.event.get():
@@ -307,4 +307,4 @@ def game_over(final_score, screen):
 # Main script to run game
 name = main_menu()
 player_final_score, persistent_screen = main_game_loop(name)
-game_over(persistent_screen)
+game_over(player_final_score, persistent_screen)
