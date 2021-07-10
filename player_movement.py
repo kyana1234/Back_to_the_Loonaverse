@@ -18,16 +18,14 @@ class PlayerMovement:
         clip(): Prevents object from moving out of bounds
         move(): Moves object by velocity
         hit_by_alien(): Checks if object has been hit by an alien
-        draw(): Draw object on pygame display
-
     """
 
     def __init__(self, player_x: float, player_y: float, player_vx: float, player_vy: float,
                  player_img: pygame.Surface, screen_dim: tuple):
-        self.player_x = (screen_dim[0] / 2) - (self.player_img.get_width() / 2)
-        self.player_y = (screen_dim[1] / 4) + (screen_dim[1] / 2)
-        self.player_vx = 0
-        self.player_vy = 0
+        self.player_x = player_x
+        self.player_y = player_y
+        self.player_vx = player_vx
+        self.player_vy = player_vy
         self.player_img = player_img
         self.width = self.player_img.get_width()
         self.height = self.player_img.get_height()
@@ -101,11 +99,3 @@ class PlayerMovement:
                 and self.player_y + self.height >= alien.get_y()
                 and alien.get_x() + alien.get_width() >= self.player_x
                 and alien.get_y() + alien.get_height() >= self.player_y)
-
-    # def draw(self, screen: pygame.display):
-    #     """Default draw method that provides how the object should be drawn in the pygame display.
-    #     This method does not draw anything. Subclass should override this method based on their object should appear.
-    #
-    #     :return: error if not implemented by subclass
-    #     """
-    #     raise NotImplementedError()

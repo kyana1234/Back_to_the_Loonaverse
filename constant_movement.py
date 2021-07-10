@@ -68,12 +68,9 @@ class ConstantMovement:
     def get_random_x(self):
         return int(round(self.max_x * random.random()))
 
-    # def get_random_y(self):
-    #     return int(round(self.screen_dim[1] * random.random()))
-
     @staticmethod
     def get_random_velocity():
-        return random.random() + 0.5
+        return random.random() + 1
 
     def move(self):
         """Move object by velocity"""
@@ -93,11 +90,3 @@ class ConstantMovement:
             return True
         else:
             return False
-
-    # def draw(self, screen: pygame.display):
-    #     """Default draw method that provides how the object should be drawn in the pygame display.
-    #     This method does not draw anything. Subclass should override this method based on their object should appear.
-    #
-    #     :return: error if not implemented by subclass
-    #     """
-    #     raise NotImplementedError()

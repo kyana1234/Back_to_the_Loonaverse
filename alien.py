@@ -4,7 +4,15 @@ import constant_movement
 
 
 class Alien(constant_movement.ConstantMovement):
-    """
+    """Main game enemy that players have to dodge or shoot.
+    Subclass of Constant Movement
+
+    Attributes:
+         Please reference constant_movement.py for attributes
+
+    Functions:
+        get_img()
+        hit_by_bullet(): Checks if object has been hit by an alien
 
     """
 

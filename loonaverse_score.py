@@ -2,12 +2,18 @@ import pandas as pd
 
 
 def calculate_final_score(distance_score: int, alien_score: int):
+    """Calculates the player's final score based on distance and aliens destroyed
+
+    :param distance_score: integer score from game loop
+    :param alien_score: integer score from game loop
+    :return:
+    """
     final_score = distance_score + alien_score * 500
     return final_score
 
 
 def record_score(name: str, score_value: int):
-    """Records the final score of the player into a running list.
+    """Records the final score of the player into a running csv list.
 
     :param name: player's name
     :param score_value: final score of player at Game Over

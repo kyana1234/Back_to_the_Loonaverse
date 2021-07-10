@@ -5,6 +5,7 @@ import pygame
 class Spaceship(player_movement.PlayerMovement):
     """Subclass of PlayerMovement class
 
+    Holds the spaceship image and places the player in the default spawn point
     """
     player_img: pygame.Surface = pygame.image.load('graphics/spacecraft.png')
 
